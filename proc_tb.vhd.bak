@@ -1,0 +1,338 @@
+-- proc_tb.vhd file: proc.vhd
+LIBRARY ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_signed.all;
+
+--entity declaration--
+ENTITY proc_tb IS
+END proc_tb;
+
+--architecture of testbench with the signal names--
+ARCHITECTURE proc_tb_arch OF proc_tb IS
+		SIGNAL clk_tb : STD_LOGIC;
+		SIGNAL zero_clr_tb : STD_LOGIC;
+		SIGNAL zero_wrt_tb : STD_LOGIC;
+		SIGNAL one_clr_tb : STD_LOGIC;
+		SIGNAL one_wrt_tb : STD_LOGIC;
+		SIGNAL two_clr_tb : STD_LOGIC;
+		SIGNAL two_wrt_tb : STD_LOGIC;
+		SIGNAL three_clr_tb : STD_LOGIC;
+		SIGNAL three_wrt_tb : STD_LOGIC;
+		SIGNAL zero_in_tb : STD_LOGIC;
+		SIGNAL one_in_tb : STD_LOGIC;
+		SIGNAL two_in_tb : STD_LOGIC;
+		SIGNAL three_in_tb : STD_LOGIC;
+		SIGNAL four_in_tb : STD_LOGIC;
+		SIGNAL five_in_tb : STD_LOGIC;
+		SIGNAL six_in_tb : STD_LOGIC;
+		SIGNAL seven_in_tb : STD_LOGIC;
+		SIGNAL eight_in_tb : STD_LOGIC;
+		SIGNAL nine_in_tb : STD_LOGIC;
+		SIGNAL ten_in_tb : STD_LOGIC;
+		SIGNAL eleven_in_tb : STD_LOGIC;
+		SIGNAL twelve_in_tb : STD_LOGIC;
+		SIGNAL thirteen_in_tb : STD_LOGIC;
+		SIGNAL fourteen_in_tb : STD_LOGIC;
+		SIGNAL fifteen_in_tb : STD_LOGIC;
+		SIGNAL hi_in_tb : STD_LOGIC;
+		SIGNAL lo_in_tb : STD_LOGIC;
+		SIGNAL zhi_in_tb : STD_LOGIC;
+		SIGNAL zlo_in_tb : STD_LOGIC;
+		SIGNAL pc_in_tb : STD_LOGIC;
+		SIGNAL mdr_in_tb : STD_LOGIC;
+		SIGNAL ip_in_tb : STD_LOGIC;
+		SIGNAL cse_in_tb : STD_LOGIC;
+		SIGNAL four_clr_tb : STD_LOGIC;
+		SIGNAL four_wrt_tb : STD_LOGIC;
+		SIGNAL five_clr_tb : STD_LOGIC;
+		SIGNAL five_wrt_tb : STD_LOGIC;
+		SIGNAL six_clr_tb : STD_LOGIC;
+		SIGNAL six_wrt_tb : STD_LOGIC;
+		SIGNAL seven_clr_tb : STD_LOGIC;
+		SIGNAL seven_wrt_tb : STD_LOGIC;
+		SIGNAL eight_clr_tb : STD_LOGIC;
+		SIGNAL eight_wrt_tb : STD_LOGIC;
+		SIGNAL nine_clr_tb : STD_LOGIC;
+		SIGNAL nine_wrt_tb : STD_LOGIC;
+		SIGNAL ten_clr_tb : STD_LOGIC;
+		SIGNAL ten_wrt_tb : STD_LOGIC;
+		SIGNAL eleven_clr_tb : STD_LOGIC;
+		SIGNAL eleven_wrt_tb : STD_LOGIC;
+		SIGNAL twelve_clr_tb : STD_LOGIC;
+		SIGNAL twelve_wrt_tb : STD_LOGIC;
+		SIGNAL thirteen_clr_tb : STD_LOGIC;
+		SIGNAL thirteen_wrt_tb : STD_LOGIC;
+		SIGNAL fourteen_clr_tb : STD_LOGIC;
+		SIGNAL fourteen_wrt_tb : STD_LOGIC;
+		SIGNAL fifteen_clr_tb : STD_LOGIC;
+		SIGNAL fifteen_wrt_tb : STD_LOGIC;
+		SIGNAL hi_clr_tb : STD_LOGIC;
+		SIGNAL hi_wrt_tb : STD_LOGIC;
+		SIGNAL lo_clr_tb : STD_LOGIC;
+		SIGNAL lo_wrt_tb : STD_LOGIC;
+		SIGNAL zhi_clr_tb : STD_LOGIC;
+		SIGNAL zhi_wrt_tb : STD_LOGIC;
+		SIGNAL zlo_clr_tb : STD_LOGIC;
+		SIGNAL zlo_wrt_tb : STD_LOGIC;
+		SIGNAL pc_clr_tb : STD_LOGIC;
+		SIGNAL pc_wrt_tb : STD_LOGIC;
+		SIGNAL pc_inc_tb : STD_LOGIC;
+		SIGNAL mdr_clr_tb : STD_LOGIC;
+		SIGNAL mdr_wrt_tb : STD_LOGIC;
+		SIGNAL cse_clr_tb : STD_LOGIC;
+		SIGNAL cse_wrt_tb : STD_LOGIC;
+		SIGNAL mar_clr_tb : STD_LOGIC;
+		SIGNAL mar_wrt_tb : STD_LOGIC;
+		SIGNAL rd_tb : STD_LOGIC;
+		SIGNAL y_clr_tb : STD_LOGIC;
+		SIGNAL y_wrt_tb : STD_LOGIC;
+		SIGNAL opcode_clr_tb : STD_LOGIC;
+		SIGNAL opcode_wrt_tb : STD_LOGIC;
+		SIGNAL input_clr_tb : STD_LOGIC;
+		SIGNAL input_wrt_tb : STD_LOGIC;
+		SIGNAL mdata_in_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL bm_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL five_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL four_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL mar_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL mdr_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL opcode_out_tb : STD_LOGIC_VECTOR(3 DOWNTO 0);
+		SIGNAL pc_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL two_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL y_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL z_out_tb : STD_LOGIC_VECTOR(63 DOWNTO 0);
+		SIGNAL zhi_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+		SIGNAL zlo_out_tb : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	
+--component instantiation--
+COMPONENT proc
+	PORT
+	(
+		clk :  IN  STD_LOGIC;
+		zero_clr :  IN  STD_LOGIC;
+		zero_wrt :  IN  STD_LOGIC;
+		one_clr :  IN  STD_LOGIC;
+		one_wrt :  IN  STD_LOGIC;
+		two_clr :  IN  STD_LOGIC;
+		two_wrt :  IN  STD_LOGIC;
+		three_clr :  IN  STD_LOGIC;
+		three_wrt :  IN  STD_LOGIC;
+		zero_in :  IN  STD_LOGIC;
+		one_in :  IN  STD_LOGIC;
+		two_in :  IN  STD_LOGIC;
+		three_in :  IN  STD_LOGIC;
+		four_in :  IN  STD_LOGIC;
+		five_in :  IN  STD_LOGIC;
+		six_in :  IN  STD_LOGIC;
+		seven_in :  IN  STD_LOGIC;
+		eight_in :  IN  STD_LOGIC;
+		nine_in :  IN  STD_LOGIC;
+		ten_in :  IN  STD_LOGIC;
+		eleven_in :  IN  STD_LOGIC;
+		twelve_in :  IN  STD_LOGIC;
+		thirteen_in :  IN  STD_LOGIC;
+		fourteen_in :  IN  STD_LOGIC;
+		fifteen_in :  IN  STD_LOGIC;
+		hi_in :  IN  STD_LOGIC;
+		lo_in :  IN  STD_LOGIC;
+		zhi_in :  IN  STD_LOGIC;
+		zlo_in :  IN  STD_LOGIC;
+		pc_in :  IN  STD_LOGIC;
+		mdr_in :  IN  STD_LOGIC;
+		ip_in :  IN  STD_LOGIC;
+		cse_in :  IN  STD_LOGIC;
+		four_clr :  IN  STD_LOGIC;
+		four_wrt :  IN  STD_LOGIC;
+		five_clr :  IN  STD_LOGIC;
+		five_wrt :  IN  STD_LOGIC;
+		six_clr :  IN  STD_LOGIC;
+		six_wrt :  IN  STD_LOGIC;
+		seven_clr :  IN  STD_LOGIC;
+		seven_wrt :  IN  STD_LOGIC;
+		eight_clr :  IN  STD_LOGIC;
+		eight_wrt :  IN  STD_LOGIC;
+		nine_clr :  IN  STD_LOGIC;
+		nine_wrt :  IN  STD_LOGIC;
+		ten_clr :  IN  STD_LOGIC;
+		ten_wrt :  IN  STD_LOGIC;
+		eleven_clr :  IN  STD_LOGIC;
+		eleven_wrt :  IN  STD_LOGIC;
+		twelve_clr :  IN  STD_LOGIC;
+		twelve_wrt :  IN  STD_LOGIC;
+		thirteen_clr :  IN  STD_LOGIC;
+		thirteen_wrt :  IN  STD_LOGIC;
+		fourteen_clr :  IN  STD_LOGIC;
+		fourteen_wrt :  IN  STD_LOGIC;
+		fifteen_clr :  IN  STD_LOGIC;
+		fifteen_wrt :  IN  STD_LOGIC;
+		hi_clr :  IN  STD_LOGIC;
+		hi_wrt :  IN  STD_LOGIC;
+		lo_clr :  IN  STD_LOGIC;
+		lo_wrt :  IN  STD_LOGIC;
+		zhi_clr :  IN  STD_LOGIC;
+		zhi_wrt :  IN  STD_LOGIC;
+		zlo_clr :  IN  STD_LOGIC;
+		zlo_wrt :  IN  STD_LOGIC;
+		pc_clr :  IN  STD_LOGIC;
+		pc_wrt :  IN  STD_LOGIC;
+		pc_inc :  IN  STD_LOGIC;
+		mdr_clr :  IN  STD_LOGIC;
+		mdr_wrt :  IN  STD_LOGIC;
+		cse_clr :  IN  STD_LOGIC;
+		cse_wrt :  IN  STD_LOGIC;
+		mar_clr :  IN  STD_LOGIC;
+		mar_wrt :  IN  STD_LOGIC;
+		rd :  IN  STD_LOGIC;
+		y_clr :  IN  STD_LOGIC;
+		y_wrt :  IN  STD_LOGIC;
+		opcode_clr :  IN  STD_LOGIC;
+		opcode_wrt :  IN  STD_LOGIC;
+		input_clr :  IN  STD_LOGIC;
+		input_wrt :  IN  STD_LOGIC;
+		mdata_in :  IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		bm_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		five_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		four_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		mar_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		mdr_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		opcode_out :  OUT  STD_LOGIC_VECTOR(3 DOWNTO 0);
+		pc_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		two_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		y_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		z_out :  OUT  STD_LOGIC_VECTOR(63 DOWNTO 0);
+		zhi_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0);
+		zlo_out :  OUT  STD_LOGIC_VECTOR(31 DOWNTO 0)
+	);
+END COMPONENT proc;
+
+BEGIN
+	DUT1 : proc
+	
+--port mapping: between DUT and testbench--
+PORT MAP(
+		clk => clk_tb ,
+		zero_clr => zero_clr_tb ,
+		zero_wrt => zero_wrt_tb ,
+		one_clr => one_clr_tb ,
+		one_wrt => one_wrt_tb ,
+		two_clr => two_clr_tb ,
+		two_wrt => two_wrt_tb ,
+		three_clr => three_clr_tb ,
+		three_wrt => three_wrt_tb ,
+		zero_in => zero_in_tb ,
+		one_in => one_in_tb ,
+		two_in => two_in_tb ,
+		three_in => three_in_tb ,
+		four_in => four_in_tb ,
+		five_in => five_in_tb ,
+		six_in => six_in_tb ,
+		seven_in => seven_in_tb ,
+		eight_in => eight_in_tb ,
+		nine_in => nine_in_tb ,
+		ten_in => ten_in_tb ,
+		eleven_in => eleven_in_tb ,
+		twelve_in => twelve_in_tb ,
+		thirteen_in => thirteen_in_tb ,
+		fourteen_in => fourteen_in_tb ,
+		fifteen_in => fifteen_in_tb ,
+		hi_in => hi_in_tb ,
+		lo_in => lo_in_tb ,
+		zhi_in => zhi_in_tb ,
+		zlo_in => zlo_in_tb ,
+		pc_in => pc_in_tb ,
+		mdr_in => mdr_in_tb ,
+		ip_in => ip_in_tb ,
+		cse_in => cse_in_tb ,
+		four_clr => four_clr_tb ,
+		four_wrt => four_wrt_tb ,
+		five_clr => five_clr_tb ,
+		five_wrt => five_wrt_tb ,
+		six_clr => six_clr_tb ,
+		six_wrt => six_wrt_tb ,
+		seven_clr => seven_clr_tb ,
+		seven_wrt => seven_wrt_tb ,
+		eight_clr => eight_clr_tb ,
+		eight_wrt => eight_wrt_tb ,
+		nine_clr => nine_clr_tb ,
+		nine_wrt => nine_wrt_tb ,
+		ten_clr => ten_clr_tb ,
+		ten_wrt => ten_wrt_tb ,
+		eleven_clr => eleven_clr_tb ,
+		eleven_wrt => eleven_wrt_tb ,
+		twelve_clr => twelve_clr_tb ,
+		twelve_wrt => twelve_wrt_tb ,
+		thirteen_clr => thirteen_clr_tb ,
+		thirteen_wrt => thirteen_wrt_tb ,
+		fourteen_clr => fourteen_clr_tb ,
+		fourteen_wrt => fourteen_wrt_tb ,
+		fifteen_clr => fifteen_clr_tb ,
+		fifteen_wrt => fifteen_wrt_tb ,
+		hi_clr => hi_clr_tb ,
+		hi_wrt => hi_wrt_tb ,
+		lo_clr => lo_clr_tb ,
+		lo_wrt => lo_wrt_tb ,
+		zhi_clr => zhi_clr_tb ,
+		zhi_wrt => zhi_wrt_tb ,
+		zlo_clr => zlo_clr_tb ,
+		zlo_wrt => zlo_wrt_tb ,
+		pc_clr => pc_clr_tb ,
+		pc_wrt => pc_wrt_tb ,
+		pc_inc => pc_inc_tb ,
+		mdr_clr => mdr_clr_tb ,
+		mdr_wrt => mdr_wrt_tb ,
+		cse_clr => cse_clr_tb ,
+		cse_wrt => cse_wrt_tb ,
+		mar_clr => mar
+		mar_wrt =>
+		rd =>
+		y_clr =>
+		y_wrt =>
+		opcode_clr =>
+		opcode_wrt =>
+		input_clr =>
+		input_wrt =>
+		mdata_in =>
+		bm_out =>
+		five_out =>
+		four_out =>
+		mar_out =>
+		mdr_out =>
+		opcode_out =>
+		pc_out =>
+		two_out =>
+		y_out =>
+		z_out =>
+		zhi_out =>
+		zlo_out =>
+
+	inA => inA_tb ,
+	inB => inB_tb ,
+	inC => inC_tb ,
+	outG => outG_tb ,
+	outP => outP_tb ,
+	outS => outS_tb);
+	
+--test logic--
+sim_process : process
+
+begin
+	wait for 0 ns;
+	inA_tb <= '0';
+	inB_tb <= '0';
+	inC_tb <= '0';
+	wait for 25 ns;
+	inA_tb <= '1';
+	inB_tb <= '0';
+	inC_tb <= '0';
+	wait for 25 ns;
+	inA_tb <= '0';
+	inB_tb <= '1';
+	inC_tb <= '0';
+	wait for 25 ns;
+	inA_tb <= '1';
+	inB_tb <= '1';
+	inC_tb <= '0';
+	wait for 25 ns;
+	wait;
+end process;
+end;
