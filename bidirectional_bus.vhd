@@ -5,7 +5,8 @@ USE ieee.std_logic_unsigned.ALL;
 
 ENTITY bidirectional_bus IS
 	PORT(
-	bmzero, bmone, bmtwo, bmthree, bmfour, bmfive, bmsix, bmseven, bmeight, bmnine, bmten, bmeleven, bmtwelve, bmthirteen, bmfourteen, bmfifteen,
+	bmzero, bmone, bmtwo, bmthree, bmfour, bmfive, bmsix, bmseven, bmeight, bmnine, bmten, bmeleven, 
+	bmtwelve, bmthirteen, bmfourteen, bmfifteen,
 	bmHI, bmLO, bmZHIGH, bmZLOW, bmPC, bmMDR, bmIP, cSE : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 	eIN : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
 	bmOUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
@@ -15,7 +16,8 @@ END bidirectional_bus;
 ARCHITECTURE behavioral OF bidirectional_bus IS
 BEGIN
 	BUSMUX:
-	PROCESS(bmzero, bmone, bmtwo, bmthree, bmfour, bmfive, bmsix, bmseven, bmeight, bmnine, bmten, bmeleven, bmtwelve, bmthirteen, bmfourteen, bmfifteen,
+	PROCESS(bmzero, bmone, bmtwo, bmthree, bmfour, bmfive, bmsix, bmseven, bmeight, bmnine, 
+	bmten, bmeleven, bmtwelve, bmthirteen, bmfourteen, bmfifteen,
 	bmHI, bmLO, bmZHIGH, bmZLOW, bmPC, bmMDR, bmIP, cSE, eIN)
 	BEGIN
 		CASE eIN IS
